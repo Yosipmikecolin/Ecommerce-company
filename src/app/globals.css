@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 body {
-  padding: 40px;
+  padding: 10px 40px;
+  overflow: hidden;
 }
 
 a {

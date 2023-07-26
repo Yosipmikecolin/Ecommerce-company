@@ -2,7 +2,7 @@ import { Button } from "@mantine/core";
 import { BiRightArrowAlt, BiChevronRight, BiChevronLeft } from "react-icons/bi";
 import "./Slider.css";
 import { sliders } from "./utils";
-import { useState,useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 
 const Slider = () => {
@@ -16,15 +16,12 @@ const Slider = () => {
     index > 1 - 1 && setIndex(index - 1);
   };
 
-
-  
   return (
     <section className="slider">
       <div className="controller-slider">
-        <div className="button-left">
+        <div className="button-left" onClick={prevSlider}>
           <BiChevronLeft
             size={20}
-            onClick={prevSlider}
             style={{ color: `${index === 0 ? "#DDE6ED" : "black"}` }}
           />
         </div>
