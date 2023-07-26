@@ -2,18 +2,63 @@ import { Button } from "@mantine/core";
 import { BiRightArrowAlt, BiChevronRight, BiChevronLeft } from "react-icons/bi";
 import "./Slider.css";
 import { sliders } from "./utils";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import "animate.css";
 
 const Slider = () => {
   const [index, setIndex] = useState(0);
+  const [opacityImagen, setOpacityImagen] = useState("0.5");
+  const [animationText, setAnimationText] = useState(
+    "animate__animated animate__fadeInUp"
+  );
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (index < sliders.length - 1) {
+        setTimeout(() => {
+          setIndex((prev) => prev + 1);
+        }, 600);
+        activeAnimation();
+      } else {
+        setTimeout(() => {
+          setIndex(0);
+        }, 600);
+        activeAnimation();
+      }
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [index, sliders]);
 
   const nextSlider = () => {
-    index < sliders.length - 1 && setIndex(index + 1);
+    if (index < sliders.length - 1) {
+      setTimeout(() => {
+        setIndex(index + 1);
+      }, 600);
+      activeAnimation();
+    }
   };
 
   const prevSlider = () => {
-    index > 1 - 1 && setIndex(index - 1);
+    if (index > 1 - 1) {
+      setTimeout(() => {
+        setIndex(index - 1);
+      }, 600);
+      activeAnimation();
+    }
+  };
+
+  const activeAnimation = () => {
+    setTimeout(() => {
+      setAnimationText("animate__animated animate__fadeOutUp");
+      setOpacityImagen("0.1");
+    }, 300);
+
+    setTimeout(() => {
+      setAnimationText("animate__animated animate__fadeInDown");
+      setOpacityImagen("0.5");
+    }, 600);
   };
 
   return (
@@ -36,16 +81,17 @@ const Slider = () => {
       </div>
       <img
         src={sliders[index].url}
-        alt="prueba"
+        alt={sliders[index].text}
         style={{
           width: "100%",
           height: "100%",
           objectFit: "cover",
-          opacity: "0.5",
+          transition: "500ms ease",
+          opacity: opacityImagen,
         }}
       />
       <div className="container-text">
-        <h1>{sliders[index].text}</h1>
+        <h1 className={animationText}>{sliders[index].text}</h1>
 
         <Link href={"/products"}>
           <Button

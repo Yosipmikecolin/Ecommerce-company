@@ -129,7 +129,8 @@ const Header = () => {
         className="menu-cart"
         style={{ right: activeCart ? "40px" : "-500px" }}
       >
-        <div className="flex items-center justify-end">
+        <div className="flex items-center justify-between bg-[#fafafa] p-4 shadow-sm">
+          <h2 className="text-xl">Tu carrito</h2>
           <FiX
             size={20}
             className="float-right cursor-pointer"
@@ -138,31 +139,35 @@ const Header = () => {
           />
         </div>
         <section className="mt-5">
-          <div className="flex items-center justify-between mb-5">
-            <h2 className="text-xl">Tu carrito</h2>
-            <h1 className="text-xl">({products.length})</h1>
-          </div>
-
-          {products.map((product, index) => (
-            <div className="flex gap-3 mt-4" key={index}>
-              <Image
-                src={product.imagen}
-                width={60}
-                height={50}
-                alt="imagen1"
-                className="rounded-md"
-              />
-              <div className="w-full">
-                <div className="flex justify-between items-cente">
-                  <h2 className="font-bold block" style={poppinsBold.style}>
-                    {product.name}
-                  </h2>
-                  <p className="float-right">$ {product.price}</p>
+          {products.length ? (
+            products.map((product, index) => (
+              <div className="flex gap-3 mt-4" key={index}>
+                <img
+                  src={product.imagen}
+                  width={60}
+                  height={50}
+                  alt="imagen1"
+                  className="rounded-md"
+                />
+                <div className="w-full">
+                  <div className="flex justify-between items-cente">
+                    <h2 className="font-bold block" style={poppinsBold.style}>
+                      {product.name}
+                    </h2>
+                    <p className="float-right">$ {product.price}</p>
+                  </div>
+                  <p className="text-zinc-400">Cantidad: {product.quantity}</p>
                 </div>
-                <p className="text-zinc-400">Cantidad: {product.quantity}</p>
               </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <section className="flex flex-col justify-center items-center my-28">
+              <div className="no-cart">
+                <FiShoppingCart size={30} color="#8c8c8c" />
+              </div>
+              <p className="text-[#686868]">No hay productos en el carrito</p>
+            </section>
+          )}
         </section>
       </div>
     </header>

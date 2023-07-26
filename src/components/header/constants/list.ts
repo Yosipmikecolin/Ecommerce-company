@@ -1,4 +1,9 @@
-export const products = [
+export const products: {
+  name: string;
+  price: string;
+  imagen: string;
+  quantity: number;
+}[] = [
   {
     name: "Camiseta Azul",
     price: "120.000",
