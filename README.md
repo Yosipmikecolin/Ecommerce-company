@@ -1,4 +1,5 @@
-![imagen](https://github.com/Yosipmikecolin/Ecommerce-company/assets/71788762/91c25d55-31c5-485d-ae2c-73e2ccbe1861)
+![imagen](https://github.com/Yosipmikecolin/Ecommerce-company/assets/71788762/40290a59-2dea-4642-bb63-c4e33f4cfad0)
+
 
 ## Getting Started
 
