@@ -5,8 +5,7 @@ import { FiShoppingCart, FiUser, FiAlignJustify, FiX } from "react-icons/fi";
 import { Poppins } from "next/font/google";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import Image from "next/image";
-import { navLinks, products } from "./constants/list";
+import { carts, navLinks } from "@/constants";
 const poppins = Poppins({ subsets: ["latin"], weight: "400" });
 const poppinsBold = Poppins({ subsets: ["latin"], weight: "700" });
 
@@ -139,8 +138,8 @@ const Header = () => {
           />
         </div>
         <section className="mt-5">
-          {products.length ? (
-            products.map((product, index) => (
+          {carts.length ? (
+            carts.map((product, index) => (
               <div className="flex gap-3 mt-4" key={index}>
                 <img
                   src={product.imagen}
